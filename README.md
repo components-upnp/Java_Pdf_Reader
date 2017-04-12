@@ -5,7 +5,9 @@ Installation:
 Le repertoire build contient les éléments nécessaires pour éxecuter l'application: le fichier .jar et les dll
 Il suffit de lancer le fichier .jar pour éxecuter l'application
 
+Voici un exemple d'exécution de l'application:
 
+![alt tag](https://github.com/components-upnp/upnp_pdf_reader/blob/master/CaptureLecteurPdf.PNG)
 
 Specification UPnP:
 
