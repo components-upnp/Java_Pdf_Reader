@@ -65,17 +65,6 @@ public class VisionneuseService {
         target = Etat.AUCUNE;
     }
 
-    /**
-     * Get Status of the lamp
-     * Methode Upnp grace au syst�me d'annotation
-     * @return Action
-     */
-	@UpnpAction(out = @UpnpOutputArgument(name = "ResultStatus"))
-    public Etat getStatus() {
-        // Pour ajouter des informations suppl�mentaires UPnP en cas d'erreur :
-        // throw new ActionException(ErrorCode.ACTION_NOT_AUTHORIZED);
-        return status;
-    }
 
     @UpnpAction(out = @UpnpOutputArgument(name = "ResultNbPages"))
     public int getNbPages() {
