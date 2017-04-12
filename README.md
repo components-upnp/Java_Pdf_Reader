@@ -19,6 +19,7 @@ Le device Lecteur PDF offre le service VisionneuseService, dont voici la descrip
 
 
 Maintenance:
+
 C'est un projet Maven
 la librairie jmupdf n'a pas de depot Maven, il faut donc l'ajouter manuelement
 Pour cela il suffit de copier le repertoire "jmupdf-core" dans le repository local Maven  
