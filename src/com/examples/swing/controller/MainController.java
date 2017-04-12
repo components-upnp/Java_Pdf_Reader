@@ -268,6 +268,8 @@ public class MainController implements ActionListener, ChangeListener, WindowLis
 				}
 			}
 		}
+		this.service.getManager().getImplementation().setNbPages(document.getPageCount());
+		this.service.getManager().getImplementation().setNumPage(1);
 	}
 	
 	/**
@@ -288,7 +290,71 @@ public class MainController implements ActionListener, ChangeListener, WindowLis
 			}
 			view.clearPageCanvas();
 			document = null;			
-		}		
+		}
+		this.service.getManager().getImplementation().setNbPages(0);
+		this.service.getManager().getImplementation().setNumPage(0);
+	}
+
+	public void openDocTest() {
+		File file = new File("C:\\Users\\comkostiuk\\IdeaProjects\\upnp_pdf_reader\\src\\test\\JavaEE-Persistence.pdf");
+		if (file != null) {
+			closeDoc();
+			String pass = "";
+			while (true) {
+				try {
+					if (FileChooser.getExtension(file).equals("pdf")) {
+						document = new PdfDocument(file.toString(), pass, maxStore);
+					} else if (FileChooser.getExtension(file).equals("xps")) {
+						document = new XpsDocument(file.toString(), maxStore);
+					} else if (FileChooser.getExtension(file).equals("cbz")) {
+						document = new CbzDocument(file.toString(), maxStore);
+					}
+					if (document != null && document.getHandle() > 0) {
+						zoom = 0.75f;
+						antiAliasLevel = 8;
+						page = document.getPage(1);
+						view.setPageCanvas(page, zoom, Page.PAGE_ROTATE_AUTO, color, antiAliasLevel, gammaLevel);
+						mousePanController = new MousePanController(view);
+						view.setPanningListener(mousePanController);
+						keyController = new KeyController(view,this.ordre);
+						view.setKeyListener(keyController);
+						view.getPageNumber().setValue(Integer.valueOf(1));
+						isOpened = true;
+						break;
+					}
+				} catch (DocException e1) {
+					e1.printStackTrace();
+					break;
+				} catch (DocSecurityException e1) {
+					pass = JOptionPane.showInputDialog(null, "Document requires authentication:");
+					if (pass == null) {
+						break;
+					}
+				}
+			}
+		}
+		this.service.getManager().getImplementation().setNbPages(document.getPageCount());
+		this.service.getManager().getImplementation().setNumPage(1);
+	}
+
+	public void closeDocTest() {
+		isOpened = false;
+		view.getPageNumber().requestFocusInWindow();
+		if (document != null) {
+			document.close();
+			if (mousePanController != null) {
+				view.removePanningListener(mousePanController);
+				mousePanController = null;
+			}
+			if (keyController != null) {
+				view.removeKeyListener(keyController);
+				keyController = null;
+			}
+			view.clearPageCanvas();
+			document = null;
+		}
+		this.service.getManager().getImplementation().setNbPages(0);
+		this.service.getManager().getImplementation().setNumPage(0);
 	}
 	
 	/**
@@ -334,6 +400,7 @@ public class MainController implements ActionListener, ChangeListener, WindowLis
     	if (page.getPageNumber() < document.getPageCount()) {
 			int p = page.getPageNumber() + 1;
 			view.getPageNumber().setValue(Integer.valueOf(p));
+			this.service.getManager().getImplementation().setNumPage(Integer.valueOf(p));
 		}
     }
     
@@ -342,6 +409,7 @@ public class MainController implements ActionListener, ChangeListener, WindowLis
     	if (page.getPageNumber() != 1) {
 			int p = page.getPageNumber() - 1;
 			view.getPageNumber().setValue(Integer.valueOf(p));
+			this.service.getManager().getImplementation().setNumPage(Integer.valueOf(p));
 		}
     }
     

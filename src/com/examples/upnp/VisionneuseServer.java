@@ -23,6 +23,8 @@ import com.examples.swing.view.MainView;
 
 public class VisionneuseServer implements Runnable{
 
+    private MainController control;
+
 	public void run() {
         try {
 
@@ -78,10 +80,14 @@ public class VisionneuseServer implements Runnable{
         selectionService.setManager(
                 new DefaultServiceManager(selectionService, VisionneuseService.class)
         );
-        new MainController(new MainView(), selectionService);
+        control = new MainController(new MainView(), selectionService);
         // retour en cas de 1 service
         return new LocalDevice(identity, type, details, selectionService);
 
+    }
+
+    public MainController getControl() {
+	    return this.control;
     }
 
     

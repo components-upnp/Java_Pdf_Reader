@@ -32,6 +32,12 @@ public class VisionneuseService {
 	
 	@UpnpStateVariable(defaultValue = "AUCUNE")
 	private Etat status = Etat.AUCUNE;
+
+	@UpnpStateVariable(defaultValue = "0", datatype = "int", allowedValueMinimum = 0)
+    private int nbPages = 0;
+
+	@UpnpStateVariable(defaultValue = "0", datatype = "int", allowedValueMinimum = 0)
+    private int numPage = 0;
 	
 	@UpnpAction
     public void setTarget(@UpnpInputArgument(name = "NewTargetValue") String newTargetValue) {
@@ -69,5 +75,23 @@ public class VisionneuseService {
         // Pour ajouter des informations suppl�mentaires UPnP en cas d'erreur :
         // throw new ActionException(ErrorCode.ACTION_NOT_AUTHORIZED);
         return status;
-}
+    }
+
+    @UpnpAction(out = @UpnpOutputArgument(name = "ResultNbPages"))
+    public int getNbPages() {
+	    return this.nbPages;
+    }
+
+    @UpnpAction(out = @UpnpOutputArgument(name = "ResultNumPage"))
+    public int getNumPage() {
+	    return this.numPage;
+    }
+
+    public void setNbPages(int num) {
+	    this.nbPages = num;
+    }
+
+    public void setNumPage(int num) {
+	    this.numPage = num;
+    }
 }
