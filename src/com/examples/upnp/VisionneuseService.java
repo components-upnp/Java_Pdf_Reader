@@ -57,7 +57,6 @@ public class VisionneuseService {
         status = newActionValue;
         target = status;
         // These have no effect on the UPnP monitoring but it's JavaBean compliant
-        getPropertyChangeSupport().firePropertyChange("target", targetOldValue, target);
         getPropertyChangeSupport().firePropertyChange("status", statusOldValue, status);
         // This will send a UPnP event, it's the name of a state variable that sends events
         getPropertyChangeSupport().firePropertyChange("Status", statusOldValue, status);
@@ -76,11 +75,21 @@ public class VisionneuseService {
 	    return this.numPage;
     }
 
-    public void setNbPages(int num) {
-	    this.nbPages = num;
+    
+    public void setNbPages( @UpnpInputArgument(name = "NewNbPages") int newNbPages) {
+
+	    int oldNbPages = this.nbPages;
+	    this.nbPages = newNbPages;
+
+        getPropertyChangeSupport().firePropertyChange("NbPages", oldNbPages, this.nbPages);
+
     }
 
-    public void setNumPage(int num) {
-	    this.numPage = num;
+
+    public void setNumPage(@UpnpInputArgument(name = "NewNumPage") int newNumPage) {
+	    int oldNumPage = this.numPage;
+	    this.numPage = newNumPage;
+
+        getPropertyChangeSupport().firePropertyChange("NumPage", oldNumPage, this.numPage);
     }
 }
