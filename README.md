@@ -16,6 +16,12 @@ Le device Lecteur PDF offre le service VisionneuseService, dont voici la descrip
    1) SetTarget(String newTargetValue): newTargetValue pouvant être les chaînes DROITE ou GAUCHE respectivement pour avancer et reculer dans le défilement des slides.
    2) GetNbPages(): retourne le nombre de pages total du document ouvert (dans une variable ResultNbPages)
    3) GetNumPage(): retourne le numéro de la page courante (dans une variable ResultNumPage)
+   
+Ce composant envoie les événements:
+
+   1) NumPage lorsque le numéro de la page courante a été changé
+   2) NbPages lorsque le nombre de pages du documents a été changé
+   3) StatusEvent lorsque une nouvelle direction est reçue.
   
 Voici le schéma représentant le composant:
 
