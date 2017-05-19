@@ -1,6 +1,6 @@
 Lecteur PDF UPnP (pouvant être contrôlé par d'autres composants UPnP).
 
-Installation:
+<strong>Installation:</strong>
 
 Le repertoire build contient les éléments nécessaires pour éxecuter l'application: le fichier .jar et les dll
 Il suffit de lancer le fichier .jar pour éxecuter l'application
@@ -9,7 +9,7 @@ Voici un exemple d'exécution de l'application:
 
 ![alt tag](https://github.com/components-upnp/upnp_pdf_reader/blob/master/CaptureLecteurPdf.PNG)
 
-Specification UPnP:
+<strong>Specification UPnP:</strong>
 
 Le device Lecteur PDF offre le service VisionneuseService, dont voici la description:
 
@@ -28,7 +28,7 @@ Voici le schéma représentant le composant:
 ![alt tag](https://github.com/components-upnp/upnp_pdf_reader/blob/master/LecteurPDF.png)
 
 
-Maintenance:
+<strong>Maintenance:</strong>
 
 C'est un projet Maven
 la librairie jmupdf n'a pas de depot Maven, il faut donc l'ajouter manuelement
