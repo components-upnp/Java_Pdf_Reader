@@ -72,7 +72,9 @@ public class MainView {
     
     private PageView pageView;
 
-    private final String[] zoomLevels = {"25", "50", "75", "100", "125", "150", "200", "250"};
+    private JToolBar toolBar1;
+
+    private final String[] zoomLevels = {"25", "50", "75", "100", "125", "150", "200", "250", "300", "350", "400", "450", "500"};
     private final int defaultZoomIndex = 3;
 
 	/**
@@ -149,7 +151,7 @@ public class MainView {
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		
-		JToolBar toolBar1 = new JToolBar();				
+		toolBar1 = new JToolBar();
 				
 		Insets margins = new Insets(0, 0, 0, 0);
 		
@@ -359,6 +361,7 @@ public class MainView {
 			this.scrollPane.setViewportView(pageView);
 		}
 		this.pageView.setPage(page, zoom, rotate, color, antiAliasLevel, gamma);
+		pageView.requestFocus();
 		this.splitPane.setVisible(true);		
 		this.comboZoom.setEnabled(true);
 		this.open.setEnabled(true);
@@ -444,5 +447,14 @@ public class MainView {
 	public JSpinner getPageNumber() {
 		return pageNumber;
 	}
+
+	public void setFullScreen(boolean b) {
+		mainFrame.dispose();
+		toolBar1.setVisible(!b);
+		mainFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		mainFrame.setUndecorated(b);
+		mainFrame.setVisible(true);
+		pageView.requestFocus();
+}
 	
 }

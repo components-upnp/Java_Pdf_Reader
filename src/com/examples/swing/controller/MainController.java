@@ -66,6 +66,7 @@ public class MainController implements ActionListener, ChangeListener, WindowLis
 	private int maxStore = 60; 
 	private Ordre ordre;
 	private LocalService<VisionneuseService>service;
+	private boolean isFullScreen = false;
 	/**
 	 * Main controller
 	 * @param view
@@ -109,6 +110,10 @@ public class MainController implements ActionListener, ChangeListener, WindowLis
 		else if(etat == Etat.HAUT){
 			augmenterZoom();
 			zoomer();
+		}
+		else if(etat == Etat.CENTRE) {
+			isFullScreen = !isFullScreen;
+			view.setFullScreen(isFullScreen);
 		}
 	}
 	

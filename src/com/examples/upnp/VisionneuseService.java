@@ -75,7 +75,7 @@ public class VisionneuseService {
 	    return this.numPage;
     }
 
-    
+
     public void setNbPages( @UpnpInputArgument(name = "NewNbPages") int newNbPages) {
 
 	    int oldNbPages = this.nbPages;

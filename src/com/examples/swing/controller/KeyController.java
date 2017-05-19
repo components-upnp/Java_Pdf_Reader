@@ -7,11 +7,13 @@ import java.awt.event.MouseListener;
 
 import com.examples.swing.view.MainView;
 
+import javax.swing.*;
+
 public class KeyController implements KeyListener,MouseListener{
 	
 	private MainView view;
 	private Ordre ordre;
-	
+
 	public KeyController(MainView view,Ordre order) {
 		super();
 		this.view = view;
@@ -21,6 +23,7 @@ public class KeyController implements KeyListener,MouseListener{
 
 	@Override
 	public void keyPressed(KeyEvent e) {
+		System.out.println("Touche appuyee");
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT){
 			this.ordre.setCommande(Etat.DROITE);
 		}
@@ -30,6 +33,8 @@ public class KeyController implements KeyListener,MouseListener{
 			this.ordre.setCommande(Etat.HAUT);
 		}else if(e.getKeyCode() == KeyEvent.VK_DOWN){
 			this.ordre.setCommande(Etat.BAS);
+		}else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+				this.ordre.setCommande(Etat.CENTRE);
 		}
 	}
 

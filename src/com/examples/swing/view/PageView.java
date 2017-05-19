@@ -350,4 +350,6 @@ public class PageView extends JComponent {
     public boolean isFocusable() {
     	return true;
     }
+
+
 }
