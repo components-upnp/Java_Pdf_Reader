@@ -57,10 +57,7 @@
             <enabled>false</enabled>
         </snapshots>
     </repository>
-      <repository>
-          <id>localrepository</id>
-          <url>file://${basedir}/lib</url>
-      </repository>
+
   </repositories>
  
   <dependencies>
@@ -73,6 +70,8 @@
     	<groupId>jmupdf-core</groupId>
     	<artifactId>jmupdf</artifactId>
     	<version>1.0</version>
+        <scope>system</scope>
+        <systemPath>${project.basedir}/lib/jmupdf-core/jmupdf/1.0/jmupdf-1.0.jar</systemPath>
     </dependency>
       <dependency>
           <groupId>junit</groupId>

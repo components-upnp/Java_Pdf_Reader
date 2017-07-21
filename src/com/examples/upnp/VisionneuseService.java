@@ -90,7 +90,7 @@ public class VisionneuseService {
             getPropertyChangeSupport().firePropertyChange("Status", statusOldValue, status);
             status = Etat.AUCUNE;
         } else if (!locked) {
-            locked = true;
+           /* locked = true;
             Timer t = new Timer();
             t.schedule(new TimerTask() {
                 @Override
@@ -98,7 +98,7 @@ public class VisionneuseService {
                     locked = false;
                     System.out.println("Unlocked");
                 }
-            }, 5000);
+            }, 5000);*/
             udn = lec.getUdn();
             // These have no effect on the UPnP monitoring but it's JavaBean compliant
             getPropertyChangeSupport().firePropertyChange("status", statusOldValue, status);
